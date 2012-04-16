@@ -1,4 +1,9 @@
-# masterless puppet deployments with capistrano
+# Masterless puppet deployments with capistrano
+
+## Say what?
+* I decided very early on in my experimentation with puppet that maintaining a puppetmaster, scaling it, and dealing with the idiosyncracies therein were non starters from my point of view
+* But guess what... you can be your own master! Puppet manifests can be applied with ```puppet apply```, and by specifying a variety of options like --modulepath, it becomes very easy to see how you can use capistrano and multistage to manage your infrastructure
+* I've provided a snippet of code that would live in deploy.rb. It allows you to pass a variety of command line options at deploy time to influence the behavior of puppet
 
 ## Command line options
 * ```NOOP=t``` This will apply puppet manifests without actually performing the changes, so you can see the effect of code changes and not actually break anything: ```NOOP=t cap some_stage deploy```
